@@ -125,8 +125,6 @@ client:
               }
         - { name: components, title: SYSTEM_COMPONENT_PL, icon: components }
         - { name: projects, title: PROJECT_PL, icon: project }
-        - { name: sysrules, title: SYSRULE_PL, icon: earth }
-        - { name: metricctls, title: METRICCTL_PL, icon: nodes }
         - name: app-workloads
           title: APPLICATION_WORKLOAD_PL
           icon: appcenter
@@ -261,6 +259,8 @@ client:
                 title: GATEWAY_SETTINGS,
                 authKey: cluster-settings,
               }
+        - { name: sysrules, title: SYSRULE_PL, icon: earth }
+        - { name: metricctls, title: METRICCTL_PL, icon: nodes }
 
   # access control page navigations
   accessNavs:

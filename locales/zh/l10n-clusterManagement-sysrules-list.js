@@ -17,6 +17,6 @@
  */
 module.exports = {
   // Banner
-  SYSRULE_PL: 'syscall rules自动构建',
+  SYSRULE_PL: '系统调用规则自动构建',
   SYSRULE_DESC: '输入image, cmd, test runtime，输出rule。（功能开发中）',
 };
