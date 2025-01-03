@@ -28,14 +28,14 @@ server:
   apiServer:
     clientID: kubesphere
     clientSecret: kubesphere
-    url: http://ks-apiserver
-    wsUrl: ws://ks-apiserver
+    url: http://192.168.234.128:30881
+    wsUrl: ws://192.168.234.128:30881
 
   # docker image search default url
   dockerHubUrl: https://hub.docker.com
 
 client:
-  title: KubeSphere
+  title: Vkernel
   description: ""
   encryptKey: kubesphere
 
@@ -149,6 +149,11 @@ client:
           children:
             - { name: secrets, title: SECRET_PL }
             - { name: configmaps, title: CONFIGMAP_PL }
+            - { name: sysconfigs, title: SYSCONFIG_PL }
+            - { name: fileconfigs, title: FILECONFIG_PL }
+            - { name: ctlconfigs, title: CTLCONFIG_PL }
+            - { name: cpuconfigs, title: CPUCONFIG_PL }
+            - { name: memconfigs, title: MEMCONFIG_PL }
             - {
                 name: serviceaccounts,
                 title: SERVICE_ACCOUNT_PL,
@@ -254,6 +259,8 @@ client:
                 title: GATEWAY_SETTINGS,
                 authKey: cluster-settings,
               }
+        - { name: sysrules, title: SYSRULE_PL, icon: earth }
+        - { name: metricctls, title: METRICCTL_PL, icon: nodes }
 
   # access control page navigations
   accessNavs:
@@ -394,6 +401,11 @@ client:
           children:
             - { name: secrets, title: SECRET_PL }
             - { name: configmaps, title: CONFIGMAP_PL }
+            - { name: sysconfigs, title: SYSCONFIG_PL }
+            - { name: fileconfigs, title: FILECONFIG_PL }
+            - { name: ctlconfigs, title: CTLCONFIG_PL }
+            - { name: cpuconfigs, title: CPUCONFIG_PL }
+            - { name: memconfigs, title: MEMCONFIG_PL }
             - {
                 name: serviceaccounts,
                 title: SERVICE_ACCOUNT_PL,
@@ -482,6 +494,11 @@ client:
           children:
             - { name: secrets, title: SECRET_PL }
             - { name: configmaps, title: CONFIGMAP_PL }
+            - { name: sysconfigs, title: SYSCONFIG_PL }
+            - { name: fileconfigs, title: FILECONFIG_PL }
+            - { name: ctlconfigs, title: CTLCONFIG_PL }
+            - { name: cpuconfigs, title: CPUCONFIG_PL }
+            - { name: memconfigs, title: MEMCONFIG_PL }
         - name: settings
           title: PROJECT_SETTINGS
           icon: cogwheel

@@ -30,6 +30,11 @@ import VolumeDetail from '../containers/Volumes/Detail'
 import VolumeSnapshotDetail from '../containers/VolumeSnapshots/Detail'
 import SecretDetail from '../containers/Secrets/Detail'
 import ConfigMapDetail from '../containers/ConfigMaps/Detail'
+import SysConfigDetail from '../containers/SysConfigs/Detail'
+import FileConfigDetail from '../containers/FileConfigs/Detail'
+import CtlConfigDetail from '../containers/CtlConfigs/Detail'
+import CpuConfigDetail from '../containers/CpuConfigs/Detail'
+import MemConfigDetail from '../containers/MemConfigs/Detail'
 import ServiceAccountDetail from '../containers/ServiceAccounts/Detail'
 import CRDAppDetail from '../containers/Applications/CRDAppDetail'
 import OPAppDetail from '../containers/Applications/OPAppDetail'
@@ -89,6 +94,26 @@ export default PATH => [
   {
     path: `${PATH}/configmaps/:name`,
     component: ConfigMapDetail,
+  },
+  {
+    path: `${PATH}/sysconfigs/:name`,
+    component: SysConfigDetail,
+  },
+  {
+    path: `${PATH}/fileconfigs/:name`,
+    component: FileConfigDetail,
+  },
+  {
+    path: `${PATH}/ctlconfigs/:name`,
+    component: CtlConfigDetail,
+  },
+  {
+    path: `${PATH}/cpuconfigs/:name`,
+    component: CpuConfigDetail,
+  },
+  {
+    path: `${PATH}/memconfigs/:name`,
+    component: MemConfigDetail,
   },
   {
     path: `${PATH}/serviceAccounts/:name`,

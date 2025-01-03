@@ -252,6 +252,7 @@ export const updateLabels = (template, module, value) => {
 }
 
 export const updateFederatedAnnotations = template => {
+  console.log("Updating federated annotations with template:", template);
   const annotations = get(template, 'metadata.annotations', {})
   const overrides = get(template, 'spec.overrides', [])
 
@@ -270,7 +271,36 @@ export const updateFederatedAnnotations = template => {
     }
   })
   set(template, 'spec.overrides', overrides)
+  console.log("Updated template after:", template);
 }
+
+// export const updateFederatedAnnotations = (template, updateCallback) => {
+//   const newTemplate = { ...template }  // 创建 template 的副本
+//   const annotations = get(newTemplate, 'metadata.annotations', {})
+//   const overrides = get(newTemplate, 'spec.overrides', [])
+
+//   overrides.forEach(od => {
+//     od.clusterOverrides = od.clusterOverrides || []
+//     const cod = od.clusterOverrides.find(
+//       item => item.path === '/metadata/annotations'
+//     )
+//     if (cod) {
+//       cod.value = annotations
+//     } else {
+//       od.clusterOverrides.push({
+//         path: '/metadata/annotations',
+//         value: annotations,
+//       })
+//     }
+//   })
+
+//   // 更新完 overrides 后，更新新的 template
+//   set(newTemplate, 'spec.overrides', overrides)
+
+//   // 调用传入的回调函数来更新父组件中的 template
+//   updateCallback(newTemplate)
+// }
+
 
 const merge = (origin, path, newObj) => {
   const data = get(origin, path)

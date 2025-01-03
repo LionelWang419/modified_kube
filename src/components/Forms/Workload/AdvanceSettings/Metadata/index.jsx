@@ -19,7 +19,7 @@
 import { debounce, get, isEmpty, isUndefined, set } from 'lodash'
 import React from 'react'
 import { Form } from '@kube-design/components'
-import { PropertiesInput } from 'components/Inputs'
+import { PropertiesInput, AnnoInput} from 'components/Inputs'
 import { isValidLabel, updateLabels, updateFederatedAnnotations } from 'utils'
 
 export default class Metadata extends React.Component {
@@ -42,12 +42,13 @@ export default class Metadata extends React.Component {
   }, 200)
 
   handleAnnotationsChange = debounce(value => {
+    console.log("isFederated:", this.props.isFederated);
     if (this.props.isFederated) {
       set(this.formTemplate, 'metadata.annotations', value)
       updateFederatedAnnotations(this.formTemplate)
     }
   }, 200)
-
+  
   labelsValidator = (rule, value, callback) => {
     if (isUndefined(value) || isEmpty(value)) {
       return callback()
@@ -83,13 +84,15 @@ export default class Metadata extends React.Component {
           />
         </Form.Item>
         <Form.Item label={t('ANNOTATION_PL')}>
-          <PropertiesInput
+          <AnnoInput
             name="metadata.annotations"
             addText={t('ADD')}
             hiddenKeys={globals.config.preservedAnnotations}
-            onChange={this.handleAnnotationsChange}
+            //onChange={value => this.handleAnnotationsChange(value, 'section1')}
+            onChange={(value) => {this.handleAnnotationsChange}}
           />
         </Form.Item>
+        
       </>
     )
   }

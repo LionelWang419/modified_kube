@@ -46,6 +46,13 @@ import Services from '../containers/Workload/Services'
 import Routes from '../containers/Workload/Routes'
 import Secrets from '../containers/Secrets'
 import ConfigMaps from '../containers/ConfigMaps'
+import SysConfigs from '../containers/SysConfigs'
+import FileConfigs from '../containers/FileConfigs'
+import CtlConfigs from '../containers/CtlConfigs'
+import CpuConfigs from '../containers/CpuConfigs'
+import MemConfigs from '../containers/MemConfigs'
+import SysRules from '../containers/SysRules'
+import MetricCtls from '../containers/MetricCtls'
 import ServiceAccounts from '../containers/ServiceAccounts'
 import ClusterMonitor from '../containers/Monitor/Cluster'
 import ResourceMonitor from '../containers/Monitor/Resource'
@@ -167,6 +174,41 @@ export default [
           {
             path: `${PATH}/configmaps`,
             component: ConfigMaps,
+            exact: true,
+          },
+          {
+            path: `${PATH}/sysconfigs`,
+            component: SysConfigs,
+            exact: true,
+          },
+          {
+            path: `${PATH}/sysrules`,
+            component: SysRules,
+            exact: true,
+          },
+          {
+            path: `${PATH}/metricctls`,
+            component: MetricCtls,
+            exact: true,
+          },
+          {
+            path: `${PATH}/fileconfigs`,
+            component: FileConfigs,
+            exact: true,
+          },
+          {
+            path: `${PATH}/ctlconfigs`,
+            component: CtlConfigs,
+            exact: true,
+          },
+          {
+            path: `${PATH}/cpuconfigs`,
+            component: CpuConfigs,
+            exact: true,
+          },
+          {
+            path: `${PATH}/memconfigs`,
+            component: MemConfigs,
             exact: true,
           },
           {

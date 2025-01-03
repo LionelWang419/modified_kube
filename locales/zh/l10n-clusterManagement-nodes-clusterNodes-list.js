@@ -75,5 +75,11 @@ module.exports = {
   CLEAR_SEARCH_CONDITIONS: '清空搜索条件。',
   // List > Edit Taints
   DUPLICATE_KEYS: '该键已经存在，请输入其他键。',
-  EMPTY_KEY: '请输入一个键。'
+  EMPTY_KEY: '请输入一个键。',
+  CPU_SCHE: 'CPU调度器',
+  MEMORY_THP: '内存参数（THP）',
+  KERNEL_PERMISSION: '开启内核权限数据防护',
+  SYSCALL: '系统调用',
+  FILE_RULE: '文件规则',
+  SYS_CONTROL: '内核参数',
 };

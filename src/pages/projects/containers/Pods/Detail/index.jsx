@@ -149,6 +149,10 @@ export default class PodDetail extends React.Component {
         value: get(detail, 'status.qosClass'),
       },
       {
+        name: t('运行时类别'),
+        value: get(detail, 'spec.runtimeClassName', '(default)'),   // 读取pod spec并提取里面的runtimeClass
+      },
+      {
         name: t('CREATION_TIME_TCAP'),
         value: getLocalTime(detail.createTime).format('YYYY-MM-DD HH:mm:ss'),
       },

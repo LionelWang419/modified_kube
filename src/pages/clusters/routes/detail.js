@@ -25,6 +25,11 @@ import ServiceDetail from 'projects/containers/Services/Detail'
 import RouteDetail from 'projects/containers/Routes/Detail'
 import SecretDetail from 'projects/containers/Secrets/Detail'
 import ConfigMapDetail from 'projects/containers/ConfigMaps/Detail'
+import SysConfigDetail from 'projects/containers/SysConfigs/Detail'
+import FileConfigDetail from 'projects/containers/FileConfigs/Detail'
+import CtlConfigDetail from 'projects/containers/CtlConfigs/Detail'
+import CpuConfigDetail from 'projects/containers/CpuConfigs/Detail'
+import MemConfigDetail from 'projects/containers/MemConfigs/Detail'
 import ServiceAccountDetail from 'projects/containers/ServiceAccounts/Detail'
 import PodDetail from 'projects/containers/Pods/Detail'
 import ContainerDetail from 'projects/containers/Pods/Containers/Detail'
@@ -144,6 +149,26 @@ export default [
       {
         path: `${PATH}/projects/:namespace/configmaps/:name`,
         component: ConfigMapDetail,
+      },
+      {
+        path: `${PATH}/projects/:namespace/sysconfigs/:name`,
+        component: SysConfigDetail,
+      },
+      {
+        path: `${PATH}/projects/:namespace/fileconfigs/:name`,
+        component: FileConfigDetail,
+      },
+      {
+        path: `${PATH}/projects/:namespace/ctlconfigs/:name`,
+        component: CtlConfigDetail,
+      },
+      {
+        path: `${PATH}/projects/:namespace/cpuconfigs/:name`,
+        component: CpuConfigDetail,
+      },
+      {
+        path: `${PATH}/projects/:namespace/memconfigs/:name`,
+        component: MemConfigDetail,
       },
       {
         path: `${PATH}/projects/:namespace/serviceaccounts/:name`,

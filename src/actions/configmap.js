@@ -104,4 +104,324 @@ export default {
       })
     },
   },
+  'cpuconfig.create': {
+    on({ store, cluster, namespace, module, isFederated, success, ...props }) {
+      const kind = MODULE_KIND_MAP[module]
+      const formTemplate = {
+        [kind]: FORM_TEMPLATES[module]({
+          namespace,
+        }),
+      }
+
+      if (isFederated) {
+        Object.keys(formTemplate).forEach(key => {
+          formTemplate[key] = FORM_TEMPLATES.federated({
+            data: formTemplate[key],
+            clusters: props.projectDetail.clusters.map(item => item.name),
+            kind: key,
+          })
+        })
+      }
+
+      const modal = Modal.open({
+        onOk: newObject => {
+          const data = get(newObject, kind)
+
+          if (!data) {
+            return
+          }
+
+          // 检查是否包含 cpu.profile 字段
+          const hasCpuProfile = Object.keys(data.data || {}).some(key => 
+            key === 'cpu.profile'
+          )
+
+          if (!hasCpuProfile) {
+            Notify.error({
+              content: t('CPU_PROFILE_REQUIRED'),
+            })
+            return
+          }
+
+          store
+            .create(data, {
+              cluster,
+              namespace: namespace || get(data, 'metadata.namespace'),
+            })
+            .then(() => {
+              Modal.close(modal)
+              Notify.success({ content: t('CREATE_SUCCESSFUL') })
+              success && success(data)
+              formPersist.delete(`${module}_create_form`)
+            })
+        },
+        module,
+        cluster,
+        namespace,
+        name: kind,
+        isFederated,
+        formTemplate,
+        steps: FORM_STEPS,
+        modal: CreateModal,
+        store,
+        ...props,
+      })
+    },
+  },
+  'memconfig.create': {
+    on({ store, cluster, namespace, module, isFederated, success, ...props }) {
+      const kind = MODULE_KIND_MAP[module]
+      const formTemplate = {
+        [kind]: FORM_TEMPLATES[module]({
+          namespace,
+        }),
+      }
+
+      if (isFederated) {
+        Object.keys(formTemplate).forEach(key => {
+          formTemplate[key] = FORM_TEMPLATES.federated({
+            data: formTemplate[key],
+            clusters: props.projectDetail.clusters.map(item => item.name),
+            kind: key,
+          })
+        })
+      }
+
+      const modal = Modal.open({
+        onOk: newObject => {
+          const data = get(newObject, kind)
+
+          if (!data) {
+            return
+          }
+
+          // 检查是否包含 memory.profile 字段
+          const hasMemoryProfile = Object.keys(data.data || {}).some(key => 
+            key === 'memory.profile'
+          )
+
+          if (!hasMemoryProfile) {
+            Notify.error({
+              content: t('MEMORY_PROFILE_REQUIRED'),
+            })
+            return
+          }
+
+          store
+            .create(data, {
+              cluster,
+              namespace: namespace || get(data, 'metadata.namespace'),
+            })
+            .then(() => {
+              Modal.close(modal)
+              Notify.success({ content: t('CREATE_SUCCESSFUL') })
+              success && success(data)
+              formPersist.delete(`${module}_create_form`)
+            })
+        },
+        module,
+        cluster,
+        namespace,
+        name: kind,
+        isFederated,
+        formTemplate,
+        steps: FORM_STEPS,
+        modal: CreateModal,
+        store,
+        ...props,
+      })
+    },
+  },
+  'fileconfig.create': {
+    on({ store, cluster, namespace, module, isFederated, success, ...props }) {
+      const kind = MODULE_KIND_MAP[module]
+      const formTemplate = {
+        [kind]: FORM_TEMPLATES[module]({
+          namespace,
+        }),
+      }
+
+      if (isFederated) {
+        Object.keys(formTemplate).forEach(key => {
+          formTemplate[key] = FORM_TEMPLATES.federated({
+            data: formTemplate[key],
+            clusters: props.projectDetail.clusters.map(item => item.name),
+            kind: key,
+          })
+        })
+      }
+
+      const modal = Modal.open({
+        onOk: newObject => {
+          const data = get(newObject, kind)
+
+          if (!data) {
+            return
+          }
+
+          // 检查是否包含 file.profile 字段
+          const hasFileProfile = Object.keys(data.data || {}).some(key => 
+            key === 'file.profile'
+          )
+
+          if (!hasFileProfile) {
+            Notify.error({
+              content: t('FILE_PROFILE_REQUIRED'),
+            })
+            return
+          }
+
+          store
+            .create(data, {
+              cluster,
+              namespace: namespace || get(data, 'metadata.namespace'),
+            })
+            .then(() => {
+              Modal.close(modal)
+              Notify.success({ content: t('CREATE_SUCCESSFUL') })
+              success && success(data)
+              formPersist.delete(`${module}_create_form`)
+            })
+        },
+        module,
+        cluster,
+        namespace,
+        name: kind,
+        isFederated,
+        formTemplate,
+        steps: FORM_STEPS,
+        modal: CreateModal,
+        store,
+        ...props,
+      })
+    },
+  },
+  'ctlconfig.create': {
+    on({ store, cluster, namespace, module, isFederated, success, ...props }) {
+      const kind = MODULE_KIND_MAP[module]
+      const formTemplate = {
+        [kind]: FORM_TEMPLATES[module]({
+          namespace,
+        }),
+      }
+
+      if (isFederated) {
+        Object.keys(formTemplate).forEach(key => {
+          formTemplate[key] = FORM_TEMPLATES.federated({
+            data: formTemplate[key],
+            clusters: props.projectDetail.clusters.map(item => item.name),
+            kind: key,
+          })
+        })
+      }
+
+      const modal = Modal.open({
+        onOk: newObject => {
+          const data = get(newObject, kind)
+
+          if (!data) {
+            return
+          }
+
+          // 检查是否包含 sysctl.profile 字段
+          const hasCtlProfile = Object.keys(data.data || {}).some(key => 
+            key === 'sysctl.profile'
+          )
+
+          if (!hasCtlProfile) {
+            Notify.error({
+              content: t('SYSCTL_PROFILE_REQUIRED'),
+            })
+            return
+          }
+
+          store
+            .create(data, {
+              cluster,
+              namespace: namespace || get(data, 'metadata.namespace'),
+            })
+            .then(() => {
+              Modal.close(modal)
+              Notify.success({ content: t('CREATE_SUCCESSFUL') })
+              success && success(data)
+              formPersist.delete(`${module}_create_form`)
+            })
+        },
+        module,
+        cluster,
+        namespace,
+        name: kind,
+        isFederated,
+        formTemplate,
+        steps: FORM_STEPS,
+        modal: CreateModal,
+        store,
+        ...props,
+      })
+    },
+  },
+  'sysconfig.create': {
+    on({ store, cluster, namespace, module, isFederated, success, ...props }) {
+      const kind = MODULE_KIND_MAP[module]
+      const formTemplate = {
+        [kind]: FORM_TEMPLATES[module]({
+          namespace,
+        }),
+      }
+
+      if (isFederated) {
+        Object.keys(formTemplate).forEach(key => {
+          formTemplate[key] = FORM_TEMPLATES.federated({
+            data: formTemplate[key],
+            clusters: props.projectDetail.clusters.map(item => item.name),
+            kind: key,
+          })
+        })
+      }
+
+      const modal = Modal.open({
+        onOk: newObject => {
+          const data = get(newObject, kind)
+
+          if (!data) {
+            return
+          }
+
+          // 检查是否包含 syscall.profile 字段
+          const hasSyscallProfile = Object.keys(data.data || {}).some(key => 
+            key === 'syscall.profile'
+          )
+
+          if (!hasSyscallProfile) {
+            Notify.error({
+              content: t('SYSCALL_PROFILE_REQUIRED'),
+            })
+            return
+          }
+
+          store
+            .create(data, {
+              cluster,
+              namespace: namespace || get(data, 'metadata.namespace'),
+            })
+            .then(() => {
+              Modal.close(modal)
+              Notify.success({ content: t('CREATE_SUCCESSFUL') })
+              success && success(data)
+              formPersist.delete(`${module}_create_form`)
+            })
+        },
+        module,
+        cluster,
+        namespace,
+        name: kind,
+        isFederated,
+        formTemplate,
+        steps: FORM_STEPS,
+        modal: CreateModal,
+        store,
+        ...props,
+      })
+    },
+  },
 }
