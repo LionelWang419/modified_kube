@@ -156,11 +156,19 @@ export default class CpuConfigs extends React.Component {
   render() {
     const { match, bannerProps, tableProps } = this.props
 
+    // 过滤数据源，只保留包含cpu.profile的configmap
+    const filteredTableProps = {
+      ...tableProps,
+      data: tableProps.data.filter(item => 
+        Object.keys(item.data || {}).some(key => key.includes('cpu.profile'))
+      ),
+    }
+
     return (
       <ListPage {...this.props}>
         <Banner {...bannerProps} />
         <ResourceTable
-          {...tableProps}
+          {...filteredTableProps}
           itemActions={this.itemActions}
           columns={this.getColumns()}
           onCreate={this.showCreate}

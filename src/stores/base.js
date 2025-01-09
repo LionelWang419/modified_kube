@@ -81,14 +81,12 @@ export default class BaseStore {
     }`
 
   getFilterParams = params => {
-    console.log('Filter params input:', params)
     const result = { ...params }
     if (result.app) {
       result.labelSelector = result.labelSelector || ''
       result.labelSelector += `app.kubernetes.io/name=${result.app}`
       delete result.app
     }
-    console.log('Filter params output:', result)
     return result
   }
 
@@ -134,15 +132,10 @@ export default class BaseStore {
 
     params.limit = params.limit || 10
 
-    console.log('Request URL:', this.getResourceUrl({ cluster, workspace, namespace, devops }))
-    console.log('Request params:', this.getFilterParams(params))
-    
     const result = await request.get(
       this.getResourceUrl({ cluster, workspace, namespace, devops }),
       this.getFilterParams(params)
     )
-    
-    console.log('Response:', result)
     const data = (get(result, 'items') || []).map(item => ({
       cluster,
       namespace,
