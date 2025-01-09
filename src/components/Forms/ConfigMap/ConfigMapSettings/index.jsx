@@ -76,6 +76,7 @@ export default class ConfigMapSettings extends React.Component {
         selectKey={selectDataKey}
         onOk={this.handleData}
         onCancel={this.hideDataForm}
+        formTemplate={this.formTemplate}
       />
     )
   }

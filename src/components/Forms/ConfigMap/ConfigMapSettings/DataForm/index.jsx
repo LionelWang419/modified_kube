@@ -76,6 +76,29 @@ export default class SecretDataForm extends React.Component {
     form &&
       form.validate(() => {
         const { key, value } = form.getData()
+        
+        // 定义配置类型映射
+        const profileTypes = {
+          'cpu.profile': 'cpu_profile',
+          'memory.profile': 'memory_profile',
+          'file.profile': 'file_profile',
+          'syscall.profile': 'syscall_profile',
+          'sysctl.profile': 'sysctl_profile'
+        }
+
+        // 如果是已知的配置类型
+        if (profileTypes[key]) {
+          const formTemplate = this.props.formTemplate
+          
+          // 确保 labels 存在
+          if (!formTemplate.metadata.labels) {
+            formTemplate.metadata.labels = {}
+          }
+          
+          // 设置对应的 profile 标签为 true
+          formTemplate.metadata.labels[profileTypes[key]] = 'true'
+        }
+
         onOk({ [trim(key)]: value })
         callback && callback()
       })
