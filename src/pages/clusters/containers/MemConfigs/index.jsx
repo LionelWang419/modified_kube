@@ -156,19 +156,12 @@ export default class MemConfigs extends React.Component {
   render() {
     const { match, bannerProps, tableProps } = this.props
 
-    // 过滤数据源，只保留包含memory.profile的configmap
-    const filteredTableProps = {
-      ...tableProps,
-      data: tableProps.data.filter(item => 
-        Object.keys(item.data || {}).some(key => key.includes('memory.profile'))
-      ),
-    }
 
     return (
       <ListPage {...this.props}>
         <Banner {...bannerProps} />
         <ResourceTable
-          {...filteredTableProps}
+          {...tableProps}
           itemActions={this.itemActions}
           columns={this.getColumns()}
           onCreate={this.showCreate}

@@ -130,6 +130,25 @@ export default function withList(options) {
         if (this.searchByApp) {
           paramsObj.searchByApp = this.searchByApp
         }
+        
+        switch (this.module) {
+          case 'cpuconfigs':
+            paramsObj.labelSelector = 'cpu_profile=true'
+            break
+          case 'memconfigs':
+            paramsObj.labelSelector = 'memory_profile=true'
+            break
+          case 'fileconfigs':
+            paramsObj.labelSelector = 'file_profile=true'
+            break
+          case 'sysconfigs':
+            paramsObj.labelSelector = 'syscall_profile=true'
+            break
+          case 'ctlconfigs':
+            paramsObj.labelSelector = 'sysctl_profile=true'
+            break
+        }
+        
         await this.store.fetchList(paramsObj)
         this.list.silent = false
       }

@@ -156,19 +156,12 @@ export default class SysConfigs extends React.Component {
   render() {
     const { match, bannerProps, tableProps } = this.props
 
-    // 过滤数据源，只保留包含syscall.profile的configmap
-    const filteredTableProps = {
-      ...tableProps,
-      data: tableProps.data.filter(item => 
-        Object.keys(item.data || {}).some(key => key.includes('syscall.profile'))
-      ),
-    }
 
     return (
       <ListPage {...this.props}>
         <Banner {...bannerProps} />
         <ResourceTable
-          {...filteredTableProps}
+          {...tableProps}
           itemActions={this.itemActions}
           columns={this.getColumns()}
           onCreate={this.showCreate}
